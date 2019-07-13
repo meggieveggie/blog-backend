@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    volumes:
+      - .:/usr/src/app/.
+  mongodb:
+    image: mongo:3.4
+    volumes:
+      - data:/data/db
+volumes:
+  data:
