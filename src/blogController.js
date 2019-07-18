@@ -16,8 +16,9 @@ exports.index = function (req, res) {
             message: "Blogs retrieved successfully",
             data: blog
         });
-    });
+    }, req.query.limit, req.query.search);
 };
+
 
 // Handle create blog actions
 exports.new = function (req, res) {

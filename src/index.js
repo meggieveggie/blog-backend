@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
-mongoose.connect('mongodb://mongodb:27017/blog', { useNewUrlParser: true});
+mongoose.connect('mongodb://mongodb:27017/blog', { useNewUrlParser: true, autoIndex: true });
 
 var db = mongoose.connection;
 // Added check for DB connection

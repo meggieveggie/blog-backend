@@ -16,7 +16,9 @@ var blogSchema = mongoose.Schema({
     },
     content: {
         type: String,
-        required: true
+        text: true,
+        required: true,
+        index: true
     },
     image: {
         type: String,
@@ -29,6 +31,6 @@ var blogSchema = mongoose.Schema({
 });
 // Export Blog model
 var Blog = module.exports = mongoose.model('blog', blogSchema);
-module.exports.get = function (callback, limit) {
-    Blog.find(callback).limit(limit);
+module.exports.get = function (callback, limit, search) {
+    Blog.find({ $text: { $search: search } }, callback).limit(limit);
 }
